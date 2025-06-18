@@ -2,45 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home" />
-    <item
-        android:id="@+id/nav_message"
-        android:icon="@drawable/ic_baseline_message_24"
-        android:title="Message" />
-    <item
-        android:id="@+id/nav_sync"
-        android:icon="@drawable/ic_baseline_sync_24"
-        android:title="Sync" />
-    <item
-        android:id="@+id/nav_trash"
-        android:icon="@drawable/ic_baseline_delete_24"
-        android:title="Trash" />
-    <item
-        android:id="@+id/nav_setting"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:title="Setting" />
-    <item android:title="Profile">
-        <menu>
-            <item
-                android:id="@+id/nav_login"
-                android:icon="@drawable/ic_baseline_login_24"
-                android:title="Login" />
-        </menu>
-    </item>
 
-    <item android:title="Communication">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_baseline_share_24"
-                android:title="Share"/>
-            <item
-                android:id="@+id/nav_rate_us"
-                android:icon="@drawable/ic_baseline_rate_review_24"
-                android:title="Rate us"/>
-        </menu>
-    </item>
+    <item
+        android:id="@+id/other_function"
+        android:icon="@drawable/other_function"
+        android:title="@string/other_function" />
+    <item
+        android:id="@+id/nav_language"
+        android:icon="@drawable/language"
+        android:title="@string/language" />
+    <item
+        android:id="@+id/nav_change_theme"
+        android:icon="@drawable/change_theme"
+        android:title="@string/change_theme" />
+    <item
+        android:id="@+id/nav_feedback"
+        android:icon="@drawable/feedback"
+        android:title="@string/feedback" />
+    <item
+        android:id="@+id/nav_rate_us"
+        android:icon="@drawable/rate_us"
+        android:title="@string/rate" />
 </menu>

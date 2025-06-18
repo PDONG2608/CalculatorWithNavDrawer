@@ -15,4 +15,9 @@
     <string name="_1">1</string>
     <string name="_0">0</string>
     <string name="_dot">.</string>
+    <string name="language">Language</string>
+    <string name="change_theme">Change Theme</string>
+    <string name="feedback">Feedback</string>
+    <string name="rate">Rate us</string>
+    <string name="other_function">Other function</string>
 </resources>
