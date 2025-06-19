@@ -1,14 +1,16 @@
 package com.example.navigationdrawer
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.navigationdrawer.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
@@ -175,8 +177,9 @@ class MainActivity : AppCompatActivity() {
         when(it.itemId){
             R.id.nav_language -> Toast.makeText(applicationContext, "Click Language",Toast.LENGTH_SHORT).show()
             R.id.nav_change_theme -> Toast.makeText(applicationContext, "Click Change Theme",Toast.LENGTH_SHORT).show()
-            R.id.nav_feedback -> Toast.makeText(applicationContext, "Click Feedback",Toast.LENGTH_SHORT).show()
-            R.id.nav_rate_us -> Toast.makeText(applicationContext, "Click Rate us",Toast.LENGTH_SHORT).show()
+            R.id.nav_rate_us -> {
+                startActivity(Intent(this, RateActivity::class.java))
+            }
         }
     }
 

@@ -20,4 +20,14 @@
     <string name="feedback">Feedback</string>
     <string name="rate">Rate us</string>
     <string name="other_function">Other function</string>
+    <string name="rate_question">How do you fell about this app?</string>
+    <string name="tell_us_in_a_comment">Tell us in a comment!</string>
+    <string name="terrible">Terrible</string>
+    <string name="bad">bad</string>
+    <string name="okay">Okay</string>
+    <string name="good">Good</string>
+    <string name="excellent">Excellent</string>
+    <string name="thanks_for_rate">Thanks for rate</string>
+    <string name="we_will_do_our_best">We will do our best!</string>
+    <string name="please_select_rating">Please select a rating</string>
 </resources>
