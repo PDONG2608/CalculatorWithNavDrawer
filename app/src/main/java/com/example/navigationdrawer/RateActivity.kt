@@ -3,6 +3,7 @@ package com.example.navigationdrawer
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.navigationdrawer.databinding.ActivityRateBinding
@@ -43,7 +44,13 @@ class RateActivity : AppCompatActivity() {
                         getString(R.string.we_will_do_our_best),
                 Toast.LENGTH_SHORT
             ).show()
+            resetDefaultView()
         }
+    }
+
+    private fun resetDefaultView() {
+        binding.commentInput.text.clear()
+        binding.commentInput.clearFocus()
     }
 
     private fun updateStars(selected: Int) {

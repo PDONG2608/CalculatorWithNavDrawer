@@ -175,7 +175,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleClickNavigationItem(it: MenuItem) {
         when(it.itemId){
-            R.id.nav_language -> Toast.makeText(applicationContext, "Click Language",Toast.LENGTH_SHORT).show()
+            R.id.nav_language -> {
+                startActivity(Intent(this, LanguageActivity::class.java))
+            }
             R.id.nav_change_theme -> Toast.makeText(applicationContext, "Click Change Theme",Toast.LENGTH_SHORT).show()
             R.id.nav_rate_us -> {
                 startActivity(Intent(this, RateActivity::class.java))

@@ -30,4 +30,16 @@
     <string name="thanks_for_rate">Thanks for rate</string>
     <string name="we_will_do_our_best">We will do our best!</string>
     <string name="please_select_rating">Please select a rating</string>
+    <string name="vietnamese">Vietnamese</string>
+    <string name="english_us">English (US)</string>
+    <string name="english_uk">English (UK)</string>
+    <string name="french">French</string>
+    <string name="german">German</string>
+    <string name="japanese">Japanese</string>
+    <string name="korean">Korean</string>
+    <string name="portuguese">Portuguese</string>
+    <string name="spanish">Spanish</string>
+    <string name="arabic">Arabic</string>
+    <string name="apply">Apply</string>
+    <string name="selected">Selected</string>
 </resources>
