@@ -42,4 +42,6 @@
     <string name="arabic">Arabic</string>
     <string name="apply">Apply</string>
     <string name="selected">Selected</string>
+    <string name="can_not_divide_by_zero">Can not divide by zero</string>
+    <string name="error_format">Format error</string>
 </resources>
