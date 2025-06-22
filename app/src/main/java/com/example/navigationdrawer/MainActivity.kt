@@ -3,15 +3,16 @@ package com.example.navigationdrawer
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.navigationdrawer.databinding.ActivityMainBinding
-import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var toggle: ActionBarDrawerToggle
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private var value1 = 0.0
     private var value2 = 0.0
     private var result = 0.0
+    private lateinit var languageLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_language -> startActivity(Intent(this, LanguageActivity::class.java))
+                R.id.nav_language -> {
+                    val intent = Intent(this, LanguageActivity::class.java)
+                    languageLauncher.launch(intent)
+                }
                 R.id.nav_change_theme -> showToast("Click Change Theme")
                 R.id.nav_rate_us -> startActivity(Intent(this, RateActivity::class.java))
             }
@@ -47,6 +52,15 @@ class MainActivity : AppCompatActivity() {
         binding.btnClear.setOnClickListener { binding.Output.text = ""; operator = "" }
         binding.btnDel.setOnClickListener { binding.Output.text = binding.Output.text.dropLast(1) }
         binding.btnResult.setOnClickListener { buttonResult() }
+
+        languageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data: Intent? = result.data
+                val languageCode = data?.getStringExtra(Constant.LANGUAGE)
+                Log.i("dongdong", "set language: $languageCode")
+                recreate()
+            }
+        }
     }
 
     private fun setNumberListeners() {
