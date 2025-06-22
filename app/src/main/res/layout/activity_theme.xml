@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/theme_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tvChooseTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/change_theme"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Grid các màu -->
+    <GridLayout
+        android:id="@+id/gridTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:columnCount="4"
+        android:rowCount="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvChooseTheme">
+
+        <!-- Ô màu: dùng ConstraintLayout để bọc -->
+        <!-- Repeat for each color -->
+
+        <!-- Black -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+
+            <View
+                android:id="@+id/colorBlack"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@color/black"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/borderBlack"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/color_border_selected"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Purple -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+
+            <View
+                android:id="@+id/colorPurple"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@color/purple_700"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/borderPurple"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/color_border_selected"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Green -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+
+            <View
+                android:id="@+id/colorGreen"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@color/green"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/borderGreen"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/color_border_selected"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Blue -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+
+            <View
+                android:id="@+id/colorBlue"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@color/blue"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/borderBlue"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/color_border_selected"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Yellow -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+
+            <View
+                android:id="@+id/colorYellow"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@color/yellow"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/borderYellow"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/color_border_selected"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Red -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+
+            <View
+                android:id="@+id/colorRed"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@color/red"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/borderRed"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/color_border_selected"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Pink -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+
+            <View
+                android:id="@+id/colorPink"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@color/pink"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/borderPink"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/color_border_selected"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Orange -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <View
+                android:id="@+id/colorOrange"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="5dp"
+                android:background="@color/orange"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/borderOrange"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/color_border_selected"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </GridLayout>
+
+    <!-- Nút Apply -->
+    <Button
+        android:id="@+id/btnApplyTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/apply"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

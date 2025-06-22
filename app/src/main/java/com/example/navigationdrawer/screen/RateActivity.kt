@@ -1,13 +1,12 @@
-package com.example.navigationdrawer
+package com.example.navigationdrawer.screen
 
-import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
+import com.example.navigationdrawer.R
 import com.example.navigationdrawer.databinding.ActivityRateBinding
-import java.util.Locale
 
 class RateActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRateBinding

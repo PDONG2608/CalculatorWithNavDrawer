@@ -1,4 +1,4 @@
-package com.example.navigationdrawer
+package com.example.navigationdrawer.screen
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -10,6 +10,10 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.navigationdrawer.Constant
+import com.example.navigationdrawer.LanguageUtils
+import com.example.navigationdrawer.R
+import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(){
@@ -22,24 +26,29 @@ class MainActivity : AppCompatActivity(){
     private var value2 = 0.0
     private var result = 0.0
     private lateinit var languageLauncher: ActivityResultLauncher<Intent>
+    private lateinit var themeLauncher: ActivityResultLauncher<Intent>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setLanguage()
+        setAppTheme()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_language -> {
                     val intent = Intent(this, LanguageActivity::class.java)
                     languageLauncher.launch(intent)
                 }
-                R.id.nav_change_theme -> showToast("Click Change Theme")
+                R.id.nav_change_theme -> {
+                    val intent = Intent(this, ThemeActivity::class.java)
+                    themeLauncher.launch(intent)
+                }
                 R.id.nav_rate_us -> startActivity(Intent(this, RateActivity::class.java))
             }
             true
@@ -53,6 +62,23 @@ class MainActivity : AppCompatActivity(){
         binding.btnDel.setOnClickListener { binding.Output.text = binding.Output.text.dropLast(1) }
         binding.btnResult.setOnClickListener { buttonResult() }
 
+        languageLauncherResult()
+        themeLauncherResult()
+    }
+
+    private fun themeLauncherResult() {
+        themeLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data: Intent? = result.data
+                val theme = data?.getStringExtra(Constant.THEME)
+                Log.i("dongdong", "set theme: $theme")
+                setAppTheme()
+                recreate()
+            }
+        }
+    }
+
+    private fun languageLauncherResult() {
         languageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val data: Intent? = result.data
@@ -60,6 +86,25 @@ class MainActivity : AppCompatActivity(){
                 Log.i("dongdong", "set language: $languageCode")
                 recreate()
             }
+        }
+    }
+
+    private fun setLanguage() {
+        val langCode = SharePreferenceUtils.getLanguage(this) ?: "en"
+        LanguageUtils.setLocale(this, langCode)
+    }
+
+    private fun setAppTheme() {
+        when (SharePreferenceUtils.getTheme(this)) {
+            "black" -> setTheme(R.style.Theme_Black)
+            "purple" -> setTheme(R.style.Theme_Purple)
+            "green" -> setTheme(R.style.Theme_Green)
+            "blue" -> setTheme(R.style.Theme_Blue)
+            "yellow" -> setTheme(R.style.Theme_Yellow)
+            "red" -> setTheme(R.style.Theme_Red)
+            "pink" -> setTheme(R.style.Theme_Pink)
+            "orange" -> setTheme(R.style.Theme_Orange)
+            else -> setTheme(R.style.Theme_Green) // default fallback
         }
     }
 

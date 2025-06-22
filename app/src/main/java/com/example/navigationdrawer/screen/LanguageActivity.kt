@@ -1,11 +1,16 @@
-package com.example.navigationdrawer
+package com.example.navigationdrawer.screen
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.navigationdrawer.Constant
+import com.example.navigationdrawer.LanguageAdapter
+import com.example.navigationdrawer.LanguageItem
+import com.example.navigationdrawer.LanguageUtils
+import com.example.navigationdrawer.R
+import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.databinding.ActivityLanguageBinding
 
 class LanguageActivity : AppCompatActivity() {
@@ -37,7 +42,7 @@ class LanguageActivity : AppCompatActivity() {
         mAdapter = LanguageAdapter(languages) { selected ->
             mBinding.titleLanguage.text = selected.name
             mSelectedLanguageItem = selected
-            LanguageUtils.getContextWithLocale(this, mSelectedLanguageItem!!.code)
+            LanguageUtils.setLocale(this, mSelectedLanguageItem!!.code)
         }
 
         mBinding.languageRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -57,6 +62,7 @@ class LanguageActivity : AppCompatActivity() {
             val resultIntent = Intent()
             resultIntent.putExtra(Constant.LANGUAGE, mSelectedLanguageItem?.code)
             setResult(RESULT_OK, resultIntent)
+            SharePreferenceUtils.saveLanguage(this, mSelectedLanguageItem!!.code)
             finish()
         }
     }

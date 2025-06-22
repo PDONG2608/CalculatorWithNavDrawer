@@ -15,7 +15,7 @@ class LanguageUtils {
 //        }
 
         //old
-        fun getContextWithLocale(context: Context, languageCode: String) {
+        fun setLocale(context: Context, languageCode: String) {
             val res = context.resources
             val dm = res.displayMetrics
             val conf = res.configuration
