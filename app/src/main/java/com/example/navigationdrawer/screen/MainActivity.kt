@@ -14,6 +14,7 @@ import com.example.navigationdrawer.Constant
 import com.example.navigationdrawer.LanguageUtils
 import com.example.navigationdrawer.R
 import com.example.navigationdrawer.SharePreferenceUtils
+import com.example.navigationdrawer.ThemeUtils
 import com.example.navigationdrawer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(){
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setLanguage()
-        setAppTheme()
+        ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity(){
                 val data: Intent? = result.data
                 val theme = data?.getStringExtra(Constant.THEME)
                 Log.i("dongdong", "set theme: $theme")
-                setAppTheme()
+                ThemeUtils.setAppTheme(this)
                 recreate()
             }
         }
@@ -92,20 +93,6 @@ class MainActivity : AppCompatActivity(){
     private fun setLanguage() {
         val langCode = SharePreferenceUtils.getLanguage(this) ?: "en"
         LanguageUtils.setLocale(this, langCode)
-    }
-
-    private fun setAppTheme() {
-        when (SharePreferenceUtils.getTheme(this)) {
-            "black" -> setTheme(R.style.Theme_Black)
-            "purple" -> setTheme(R.style.Theme_Purple)
-            "green" -> setTheme(R.style.Theme_Green)
-            "blue" -> setTheme(R.style.Theme_Blue)
-            "yellow" -> setTheme(R.style.Theme_Yellow)
-            "red" -> setTheme(R.style.Theme_Red)
-            "pink" -> setTheme(R.style.Theme_Pink)
-            "orange" -> setTheme(R.style.Theme_Orange)
-            else -> setTheme(R.style.Theme_Green) // default fallback
-        }
     }
 
     private fun setNumberListeners() {

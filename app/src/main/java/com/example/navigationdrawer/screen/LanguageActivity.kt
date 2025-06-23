@@ -11,6 +11,7 @@ import com.example.navigationdrawer.LanguageItem
 import com.example.navigationdrawer.LanguageUtils
 import com.example.navigationdrawer.R
 import com.example.navigationdrawer.SharePreferenceUtils
+import com.example.navigationdrawer.ThemeUtils
 import com.example.navigationdrawer.databinding.ActivityLanguageBinding
 
 class LanguageActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class LanguageActivity : AppCompatActivity() {
     private var mSelectedLanguageItem: LanguageItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)
         mBinding = ActivityLanguageBinding.inflate(layoutInflater)
         setContentView(mBinding.root)

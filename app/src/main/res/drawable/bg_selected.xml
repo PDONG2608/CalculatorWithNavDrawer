@@ -6,7 +6,7 @@
 
     <stroke
         android:width="2dp"
-        android:color="#00C569" /> <!-- green border like in your image -->
+        android:color="?attr/themeColor" />
 
     <corners android:radius="12dp" />
 </shape>

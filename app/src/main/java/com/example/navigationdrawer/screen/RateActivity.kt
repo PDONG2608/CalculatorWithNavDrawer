@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.navigationdrawer.R
+import com.example.navigationdrawer.ThemeUtils
 import com.example.navigationdrawer.databinding.ActivityRateBinding
 
 class RateActivity : AppCompatActivity() {
@@ -15,6 +16,7 @@ class RateActivity : AppCompatActivity() {
 
     private lateinit var starDescriptions: List<Int>
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityRateBinding.inflate(layoutInflater)
         setContentView(binding.root)

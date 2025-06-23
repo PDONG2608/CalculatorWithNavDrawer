@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.navigationdrawer.Constant
 import com.example.navigationdrawer.SharePreferenceUtils
+import com.example.navigationdrawer.ThemeUtils
 import com.example.navigationdrawer.databinding.ActivityThemeBinding
 
 class ThemeActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class ThemeActivity : AppCompatActivity() {
     private lateinit var borderMap: Map<String, View>
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityThemeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,26 +39,27 @@ class ThemeActivity : AppCompatActivity() {
 
     private fun setupBorders() {
         borderMap = mapOf(
-            "black" to binding.borderBlack,
-            "purple" to binding.borderPurple,
-            "green" to binding.borderGreen,
-            "blue" to binding.borderBlue,
-            "yellow" to binding.borderYellow,
-            "red" to binding.borderRed,
-            "pink" to binding.borderPink,
-            "orange" to binding.borderOrange
+            Constant.BROWN to binding.borderBlack,
+            Constant.PURPLE to binding.borderPurple,
+            Constant.GREEN to binding.borderGreen,
+            Constant.BLUE to binding.borderBlue,
+            Constant.YELLOW to binding.borderYellow,
+            Constant.RED to binding.borderRed,
+            Constant.PINK to binding.borderPink,
+            Constant.ORANGE to binding.borderOrange
         )
     }
 
     private fun setupClickEvents() {
-        binding.colorBlack.setOnClickListener { selectTheme("black") }
-        binding.colorPurple.setOnClickListener { selectTheme("purple") }
-        binding.colorGreen.setOnClickListener { selectTheme("green") }
-        binding.colorBlue.setOnClickListener { selectTheme("blue") }
-        binding.colorYellow.setOnClickListener { selectTheme("yellow") }
-        binding.colorRed.setOnClickListener { selectTheme("red") }
-        binding.colorPink.setOnClickListener { selectTheme("pink") }
-        binding.colorOrange.setOnClickListener { selectTheme("orange") }
+        binding.colorBlack.setOnClickListener { selectTheme(Constant.BROWN) }
+        binding.colorPurple.setOnClickListener { selectTheme(Constant.PURPLE) }
+        binding.colorGreen.setOnClickListener { selectTheme(Constant.GREEN) }
+        binding.colorBlue.setOnClickListener { selectTheme(Constant.BLUE) }
+        binding.colorYellow.setOnClickListener { selectTheme(Constant.YELLOW) }
+        binding.colorRed.setOnClickListener { selectTheme(Constant.RED) }
+        binding.colorPink.setOnClickListener { selectTheme(Constant.PINK) }
+        binding.colorOrange.setOnClickListener { selectTheme(Constant.ORANGE) }
+
     }
 
     private fun selectTheme(theme: String) {
