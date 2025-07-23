@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
-import com.example.navigationdrawer.R
+import com.bac.simplecalculator.R
+import com.bac.simplecalculator.databinding.ActivityRateBinding
 import com.example.navigationdrawer.ThemeUtils
-import com.example.navigationdrawer.databinding.ActivityRateBinding
 
 class RateActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRateBinding

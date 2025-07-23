@@ -1,6 +1,7 @@
 package com.example.navigationdrawer
 
 import android.app.Activity
+import com.bac.simplecalculator.R
 
 class ThemeUtils {
     companion object {

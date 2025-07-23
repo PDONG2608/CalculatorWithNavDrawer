@@ -10,12 +10,12 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import com.bac.simplecalculator.R
+import com.bac.simplecalculator.databinding.ActivityMainBinding
 import com.example.navigationdrawer.Constant
 import com.example.navigationdrawer.LanguageUtils
-import com.example.navigationdrawer.R
 import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.ThemeUtils
-import com.example.navigationdrawer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(){
 

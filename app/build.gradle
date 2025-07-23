@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
-        applicationId "com.example.navigationdrawer"
-        minSdk 29
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
-
+        applicationId "com.bac.simplecalculator"
+        minSdk 25
+        targetSdk 35
+        versionCode 6
+        versionName "1.0.6"
+        namespace "com.bac.simplecalculator"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,7 +31,6 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        dataBinding = true
     }
 }
 
@@ -44,4 +43,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'com.android.billingclient:billing:8.0.0'
+    implementation 'com.android.billingclient:billing-ktx:8.0.0'
 }

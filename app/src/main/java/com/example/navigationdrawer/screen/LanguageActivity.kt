@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bac.simplecalculator.R
+import com.bac.simplecalculator.databinding.ActivityLanguageBinding
 import com.example.navigationdrawer.Constant
 import com.example.navigationdrawer.LanguageAdapter
 import com.example.navigationdrawer.LanguageItem
 import com.example.navigationdrawer.LanguageUtils
-import com.example.navigationdrawer.R
 import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.ThemeUtils
-import com.example.navigationdrawer.databinding.ActivityLanguageBinding
 
 class LanguageActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityLanguageBinding

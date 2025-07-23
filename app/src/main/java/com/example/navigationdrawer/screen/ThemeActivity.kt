@@ -4,17 +4,15 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.bac.simplecalculator.R
+import com.bac.simplecalculator.databinding.ActivityThemeBinding
 import com.example.navigationdrawer.Constant
-import com.example.navigationdrawer.R
 import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.ThemeColor
 import com.example.navigationdrawer.ThemeColorAdapter
 import com.example.navigationdrawer.ThemeUtils
-import com.example.navigationdrawer.databinding.ActivityThemeBinding
 
 class ThemeActivity : AppCompatActivity() {
 
