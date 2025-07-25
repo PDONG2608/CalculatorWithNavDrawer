@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_marginTop="16dp"
-    android:layout_marginStart="16dp"
+    android:paddingTop="40dp"
+    android:paddingStart="20dp"
     android:background="?attr/themeColor"
     android:layout_height="wrap_content">
     <de.hdodenhof.circleimageview.CircleImageView

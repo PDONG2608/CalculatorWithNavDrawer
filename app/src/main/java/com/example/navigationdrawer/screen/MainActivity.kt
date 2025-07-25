@@ -16,6 +16,7 @@ import com.example.navigationdrawer.Constant
 import com.example.navigationdrawer.LanguageUtils
 import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.ThemeUtils
+import com.example.navigationdrawer.fullStatusBar
 
 class MainActivity : AppCompatActivity(){
 
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(){
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        fullStatusBar()
         setLanguage()
         ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)

@@ -13,6 +13,7 @@ import com.example.navigationdrawer.LanguageItem
 import com.example.navigationdrawer.LanguageUtils
 import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.ThemeUtils
+import com.example.navigationdrawer.fullStatusBar
 
 class LanguageActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityLanguageBinding
@@ -20,6 +21,7 @@ class LanguageActivity : AppCompatActivity() {
     private var mSelectedLanguageItem: LanguageItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        fullStatusBar()
         ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)
         mBinding = ActivityLanguageBinding.inflate(layoutInflater)

@@ -9,7 +9,9 @@
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingTop="25dp"
         android:background="#FFFFFF"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -29,8 +31,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/language"
-            android:textColor="@color/blue"
-            android:textSize="18sp"
+            android:textColor="?attr/themeColor"
+            android:textSize="30dp"
             android:textStyle="bold" />
 
         <ImageView

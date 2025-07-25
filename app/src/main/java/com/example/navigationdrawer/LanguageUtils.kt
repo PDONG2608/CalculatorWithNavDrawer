@@ -19,7 +19,7 @@ class LanguageUtils {
             val res = context.resources
             val dm = res.displayMetrics
             val conf = res.configuration
-            conf.setLocale(Locale(languageCode.toLowerCase())) // API 17+ only.
+            conf.setLocale(Locale(languageCode.lowercase(Locale.getDefault()))) // API 17+ only.
             res.updateConfiguration(conf, dm)
         }
     }

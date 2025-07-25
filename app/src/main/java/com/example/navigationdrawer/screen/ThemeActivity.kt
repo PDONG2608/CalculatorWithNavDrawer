@@ -13,6 +13,7 @@ import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.ThemeColor
 import com.example.navigationdrawer.ThemeColorAdapter
 import com.example.navigationdrawer.ThemeUtils
+import com.example.navigationdrawer.fullStatusBar
 
 class ThemeActivity : AppCompatActivity() {
 
@@ -22,6 +23,7 @@ class ThemeActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
+        fullStatusBar()
         ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityThemeBinding.inflate(layoutInflater)

@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.bac.simplecalculator.R
 import com.bac.simplecalculator.databinding.ActivityRateBinding
 import com.example.navigationdrawer.ThemeUtils
+import com.example.navigationdrawer.fullStatusBar
 
 class RateActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRateBinding
@@ -16,6 +17,7 @@ class RateActivity : AppCompatActivity() {
 
     private lateinit var starDescriptions: List<Int>
     override fun onCreate(savedInstanceState: Bundle?) {
+        fullStatusBar()
         ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityRateBinding.inflate(layoutInflater)
