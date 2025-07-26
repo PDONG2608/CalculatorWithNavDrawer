@@ -1,10 +1,13 @@
 package com.example.navigationdrawer.screen
 
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -42,21 +45,32 @@ class MainActivity : AppCompatActivity(){
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.navView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.nav_language -> {
-                    val intent = Intent(this, LanguageActivity::class.java)
-                    languageLauncher.launch(intent)
-                }
-                R.id.nav_change_theme -> {
-                    val intent = Intent(this, ThemeActivity::class.java)
-                    themeLauncher.launch(intent)
-                }
-                R.id.nav_rate_us -> startActivity(Intent(this, RateActivity::class.java))
-            }
-            true
+
+        //Update
+        binding.iconLanguage.setOnClickListener {
+            val intent = Intent(this, LanguageActivity::class.java)
+            languageLauncher.launch(intent)
+        }
+        binding.textLanguage.setOnClickListener {
+            val intent = Intent(this, LanguageActivity::class.java)
+            languageLauncher.launch(intent)
         }
 
+        binding.iconTheme.setOnClickListener {
+            val intent = Intent(this, ThemeActivity::class.java)
+            themeLauncher.launch(intent)
+        }
+        binding.textTheme.setOnClickListener {
+            val intent = Intent(this, ThemeActivity::class.java)
+            themeLauncher.launch(intent)
+        }
+
+        binding.iconRate.setOnClickListener {
+            startActivity(Intent(this, RateActivity::class.java))
+        }
+        binding.textRate.setOnClickListener {
+            startActivity(Intent(this, RateActivity::class.java))
+        }
         setNumberListeners()
         setOperatorListeners()
 
@@ -64,10 +78,32 @@ class MainActivity : AppCompatActivity(){
         binding.btnClear.setOnClickListener { binding.Output.text = ""; operator = "" }
         binding.btnDel.setOnClickListener { binding.Output.text = binding.Output.text.dropLast(1) }
         binding.btnResult.setOnClickListener { buttonResult() }
-
+        binding.menu.setOnClickListener { toggleOptionView() }
         languageLauncherResult()
         themeLauncherResult()
     }
+
+    private fun toggleOptionView() {
+        val screenWidth = Resources.getSystem().displayMetrics.widthPixels
+        val targetWidth = screenWidth * 3 / 4
+        val view = binding.optionViewByMenu
+        val currentWidth = view.width
+        val endWidth = if (currentWidth == 0) targetWidth else 0
+        if (view.visibility != View.VISIBLE) {
+            view.visibility = View.VISIBLE
+        }
+        val animator = ValueAnimator.ofInt(currentWidth, endWidth)
+        animator.duration = 300
+        animator.addUpdateListener { animation ->
+            val animatedWidth = animation.animatedValue as Int
+            view.layoutParams = view.layoutParams.apply {
+                width = animatedWidth
+            }
+            view.requestLayout()
+        }
+        animator.start()
+    }
+
 
     private fun themeLauncherResult() {
         themeLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

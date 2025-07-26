@@ -1,5 +1,6 @@
 package com.example.navigationdrawer
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bac.simplecalculator.R
 
 class LanguageAdapter(
+    private val context: Context,
     private val items: List<LanguageItem>,
     private val onSelected: (LanguageItem) -> Unit
 ) : RecyclerView.Adapter<LanguageAdapter.LanguageViewHolder>() {
 
-    private var selectedPosition = -1
+    private var selectedPosition = items.indexOfFirst {
+        it.code == LanguageUtils.getLocaleCode(context)
+    }
 
     inner class LanguageViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
@@ -27,11 +31,13 @@ class LanguageAdapter(
             itemView.isSelected = isSelected
 
             itemView.setOnClickListener {
-                val prev = selectedPosition
-                selectedPosition = adapterPosition
-                notifyItemChanged(prev)
-                notifyItemChanged(selectedPosition)
-                onSelected(item)
+                if (adapterPosition != RecyclerView.NO_POSITION && selectedPosition != adapterPosition) {
+                    val prev = selectedPosition
+                    selectedPosition = adapterPosition
+                    notifyItemChanged(prev)
+                    notifyItemChanged(selectedPosition)
+                    onSelected(item)
+                }
             }
         }
     }

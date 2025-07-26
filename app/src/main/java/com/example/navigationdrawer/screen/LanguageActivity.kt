@@ -43,7 +43,7 @@ class LanguageActivity : AppCompatActivity() {
             LanguageItem(getString(R.string.arabic), R.drawable.flag_ar, "ar"),
         )
 
-        mAdapter = LanguageAdapter(languages) { selected ->
+        mAdapter = LanguageAdapter(this, languages) { selected ->
             mBinding.titleLanguage.text = selected.name
             mSelectedLanguageItem = selected
             LanguageUtils.setLocale(this, mSelectedLanguageItem!!.code)

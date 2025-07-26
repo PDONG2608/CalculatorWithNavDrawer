@@ -22,5 +22,13 @@ class LanguageUtils {
             conf.setLocale(Locale(languageCode.lowercase(Locale.getDefault()))) // API 17+ only.
             res.updateConfiguration(conf, dm)
         }
+
+        fun getLocaleCode(context: Context): String {
+            val locale =
+                context.resources.configuration.locales.get(0)
+            return locale.language.lowercase(Locale.getDefault())
+        }
+
+
     }
 }
