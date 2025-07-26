@@ -32,15 +32,15 @@ class LanguageActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         val languages = listOf(
-            LanguageItem(getString(R.string.vietnamese), R.drawable.flag_vn, "vi"),
-            LanguageItem(getString(R.string.english), R.drawable.flag_us, "en"),
-            LanguageItem(getString(R.string.french), R.drawable.flag_fr, "fr"),
-            LanguageItem(getString(R.string.german), R.drawable.flag_de, "de"),
-            LanguageItem(getString(R.string.japanese), R.drawable.flag_jp, "ja"),
-            LanguageItem(getString(R.string.korean), R.drawable.flag_kr, "ko"),
-            LanguageItem(getString(R.string.portuguese), R.drawable.flag_pt, "pt"),
-            LanguageItem(getString(R.string.spanish), R.drawable.flag_es, "es"),
-            LanguageItem(getString(R.string.arabic), R.drawable.flag_ar, "ar"),
+            LanguageItem(getString(R.string.vietnamese), R.drawable.flag_vn, "vi", false),
+            LanguageItem(getString(R.string.english), R.drawable.flag_us, "en", false),
+            LanguageItem(getString(R.string.french), R.drawable.flag_fr, "fr", true),
+            LanguageItem(getString(R.string.german), R.drawable.flag_de, "de", true),
+            LanguageItem(getString(R.string.japanese), R.drawable.flag_jp, "ja", true),
+            LanguageItem(getString(R.string.korean), R.drawable.flag_kr, "ko", true),
+            LanguageItem(getString(R.string.portuguese), R.drawable.flag_pt, "pt", true),
+            LanguageItem(getString(R.string.spanish), R.drawable.flag_es, "es", true),
+            LanguageItem(getString(R.string.arabic), R.drawable.flag_ar, "ar", true),
         )
 
         mAdapter = LanguageAdapter(this, languages) { selected ->
