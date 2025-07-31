@@ -18,6 +18,7 @@ import com.bac.simplecalculator.databinding.ActivityMainBinding
 import com.example.navigationdrawer.Constant
 import com.example.navigationdrawer.LanguageUtils
 import com.example.navigationdrawer.SharePreferenceUtils
+import com.example.navigationdrawer.ShopActivity
 import com.example.navigationdrawer.ThemeUtils
 import com.example.navigationdrawer.fullStatusBar
 
@@ -81,6 +82,10 @@ class MainActivity : AppCompatActivity(){
         binding.menu.setOnClickListener { toggleOptionView() }
         languageLauncherResult()
         themeLauncherResult()
+
+        binding.tvGem.setOnClickListener {
+            startActivity(Intent(this, ShopActivity::class.java))
+        }
     }
 
     private fun toggleOptionView() {
