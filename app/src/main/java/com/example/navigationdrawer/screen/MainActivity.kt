@@ -16,7 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bac.simplecalculator.R
 import com.bac.simplecalculator.databinding.ActivityMainBinding
 import com.example.navigationdrawer.Constant
+import com.example.navigationdrawer.Constants
 import com.example.navigationdrawer.LanguageUtils
+import com.example.navigationdrawer.MySharedPreferences
 import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.ShopActivity
 import com.example.navigationdrawer.ThemeUtils
@@ -242,5 +244,10 @@ class MainActivity : AppCompatActivity(){
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return toggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.gold.text = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
     }
 }

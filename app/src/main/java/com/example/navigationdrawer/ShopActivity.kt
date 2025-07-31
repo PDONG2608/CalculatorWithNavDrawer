@@ -36,7 +36,7 @@ class ShopActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityShopBinding
     private lateinit var billingClient: BillingClient
-    private var coins = arrayListOf(50, 150, 250, 500)
+    private var coins = arrayListOf(50, 100, 200, 500)
     private var inAppProductIds = arrayListOf(KEY_IN_APP1, KEY_IN_APP2, KEY_IN_APP3, KEY_IN_APP4)
     private val optionSelectLiveData = MutableLiveData(KEY_IN_APP1)
     private var keyBuy = inAppProductIds[0]
