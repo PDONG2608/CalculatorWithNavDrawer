@@ -15,6 +15,7 @@ import com.android.billingclient.api.BillingClientStateListener
 import com.android.billingclient.api.BillingFlowParams
 import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.ConsumeParams
+import com.android.billingclient.api.ConsumeResponseListener
 import com.android.billingclient.api.PendingPurchasesParams
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
@@ -53,7 +54,7 @@ class ShopActivity : AppCompatActivity() {
 
     private fun initBilling() {
         // Khởi tạo
-        initBillingClientAndLoadPrices(this) { prices ->
+        initBillingClientAndLoadPrices { prices ->
             runOnUiThread {
                 binding.priceInApp1.text = "${prices[KEY_IN_APP1]}"
                 binding.priceInApp2.text = "${prices[KEY_IN_APP2]}"
@@ -64,17 +65,21 @@ class ShopActivity : AppCompatActivity() {
     }
 
     private fun initBillingClientAndLoadPrices(
-        context: Context,
         onPricesLoaded: (Map<String, String>) -> Unit
     ) {
         val params = PendingPurchasesParams.newBuilder()
             .enableOneTimeProducts()
             .build()
 
-        billingClient = BillingClient.newBuilder(context)
+        billingClient = BillingClient.newBuilder(this)
             .enablePendingPurchases(params)
-            .setListener(purchasesListener)
-            .build()
+            .setListener { billingResult, purchases  ->
+                if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
+                    for (purchase in purchases) {
+                        handlePurchase(purchase)
+                    }
+                }
+            }.build()
 
         billingClient.startConnection(object : BillingClientStateListener {
             override fun onBillingServiceDisconnected() {}
@@ -106,27 +111,17 @@ class ShopActivity : AppCompatActivity() {
         })
     }
 
-    private val purchasesListener = PurchasesUpdatedListener { billingResult, purchases ->
-        if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
-            for (purchase in purchases) {
-                if (purchase.purchaseState == Purchase.PurchaseState.PURCHASED) {
-                    // ✅ Gửi xác nhận nếu cần, rồi acknowledge
-                    acknowledgePurchase(purchase)
+    private fun handlePurchase(purchase: Purchase) {
+        if (purchase.purchaseState == Purchase.PurchaseState.PURCHASED && !purchase.isAcknowledged) {
+            // Tiêu thụ sản phẩm để có thể mua lại
+            val consumeParams = ConsumeParams.newBuilder()
+                .setPurchaseToken(purchase.purchaseToken)
+                .build()
+
+            billingClient.consumeAsync(consumeParams) { billingResult, _ ->
+                if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                    giveUserCoins(purchase) // Thưởng cho người dùng sau khi tiêu thụ thành công
                 }
-            }
-        }
-    }
-
-    private fun acknowledgePurchase(purchase: Purchase) {
-        if (purchase.isAcknowledged) return
-
-        val params = AcknowledgePurchaseParams.newBuilder()
-            .setPurchaseToken(purchase.purchaseToken)
-            .build()
-
-        billingClient.acknowledgePurchase(params) { billingResult ->
-            if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                giveUserCoins(purchase)
             }
         }
     }
