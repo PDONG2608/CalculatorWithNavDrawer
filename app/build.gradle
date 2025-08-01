@@ -10,16 +10,26 @@ android {
         applicationId "com.bac.simplecalculator"
         minSdk 25
         targetSdk 35
-        versionCode 7
-        versionName "1.0.7"
+        versionCode 9
+        versionName "1.0.9"
         namespace "com.bac.simplecalculator"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        register("release") {
+            storeFile = file("key/key_store.jks")
+            storePassword = "123456"
+            keyAlias = "key0"
+            keyPassword = "123456"
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
@@ -31,6 +41,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
