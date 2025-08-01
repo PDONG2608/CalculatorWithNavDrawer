@@ -1,18 +1,16 @@
 package com.example.navigationdrawer.screen
 
-import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
-import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.navigation.ui.AppBarConfiguration
 import com.bac.simplecalculator.R
 import com.bac.simplecalculator.databinding.ActivityMainBinding
 import com.example.navigationdrawer.BaseActivity
@@ -25,12 +23,11 @@ import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.ShopActivity
 import com.example.navigationdrawer.ThemeUtils
 import com.example.navigationdrawer.fullStatusBar
+import com.google.android.material.navigation.NavigationView
 
-class MainActivity : BaseActivity(){
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var toggle: ActionBarDrawerToggle
-
     private var operator = ""
     private var value1 = 0.0
     private var value2 = 0.0
@@ -38,103 +35,73 @@ class MainActivity : BaseActivity(){
     private lateinit var languageLauncher: ActivityResultLauncher<Intent>
     private lateinit var themeLauncher: ActivityResultLauncher<Intent>
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         fullStatusBar()
-//        setLanguage()
         ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
-        binding.drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        //Update
-        binding.iconLanguage.setOnClickListener {
-            val intent = Intent(this, LanguageNewActivity::class.java)
-            languageLauncher.launch(intent)
-        }
-        binding.textLanguage.setOnClickListener {
-            val intent = Intent(this, LanguageNewActivity::class.java)
-            languageLauncher.launch(intent)
-        }
-
-        binding.iconTheme.setOnClickListener {
-            val intent = Intent(this, ThemeActivity::class.java)
-            themeLauncher.launch(intent)
-        }
-        binding.textTheme.setOnClickListener {
-            val intent = Intent(this, ThemeActivity::class.java)
-            themeLauncher.launch(intent)
-        }
-
-        binding.iconRate.setOnClickListener {
-            startActivity(Intent(this, RateActivity::class.java))
-        }
-        binding.textRate.setOnClickListener {
-            startActivity(Intent(this, RateActivity::class.java))
-        }
         setNumberListeners()
         setOperatorListeners()
+        languageLauncherResult()
+        themeLauncherResult()
+        initListeners()
+
+    }
+
+    private fun initListeners() {
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        val headerView = navigationView.getHeaderView(0)
+        val ll1 = headerView.findViewById<LinearLayout>(R.id.ll1)
+        val ll2 = headerView.findViewById<LinearLayout>(R.id.ll2)
+        val ll3 = headerView.findViewById<LinearLayout>(R.id.ll3)
+
+        ll1.setOnClickListener {
+            startActivity(Intent(this, LanguageNewActivity::class.java))
+        }
+
+        ll2.setOnClickListener {
+            startActivity(Intent(this, ThemeActivity::class.java))
+        }
+
+        ll3.setOnClickListener {
+            startActivity(Intent(this, RateActivity::class.java))
+        }
+
+        binding.tvGem.setOnClickListener {
+            startActivity(Intent(this, ShopActivity::class.java))
+        }
 
         binding.btnDecimal.setOnClickListener { handleDecimal() }
         binding.btnClear.setOnClickListener { binding.Output.text = ""; operator = "" }
         binding.btnDel.setOnClickListener { binding.Output.text = binding.Output.text.dropLast(1) }
         binding.btnResult.setOnClickListener { buttonResult() }
-        binding.menu.setOnClickListener { toggleOptionView() }
-        languageLauncherResult()
-        themeLauncherResult()
-
-        binding.tvGem.setOnClickListener {
-            startActivity(Intent(this, ShopActivity::class.java))
-        }
+        binding.menu.setOnClickListener { binding.drawerLayout.openDrawer(GravityCompat.START) }
     }
-
-    private fun toggleOptionView() {
-        val screenWidth = Resources.getSystem().displayMetrics.widthPixels
-        val targetWidth = screenWidth * 3 / 4
-        val view = binding.optionViewByMenu
-        val currentWidth = view.width
-        val endWidth = if (currentWidth == 0) targetWidth else 0
-        if (view.visibility != View.VISIBLE) {
-            view.visibility = View.VISIBLE
-        }
-        val animator = ValueAnimator.ofInt(currentWidth, endWidth)
-        animator.duration = 300
-        animator.addUpdateListener { animation ->
-            val animatedWidth = animation.animatedValue as Int
-            view.layoutParams = view.layoutParams.apply {
-                width = animatedWidth
-            }
-            view.requestLayout()
-        }
-        animator.start()
-    }
-
 
     private fun themeLauncherResult() {
-        themeLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val data: Intent? = result.data
-                val theme = data?.getStringExtra(Constant.THEME)
-                Log.i("dongdong", "set theme: $theme")
-                ThemeUtils.setAppTheme(this)
-                recreate()
+        themeLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val data: Intent? = result.data
+                    val theme = data?.getStringExtra(Constant.THEME)
+                    Log.i("dongdong", "set theme: $theme")
+                    ThemeUtils.setAppTheme(this)
+                    recreate()
+                }
             }
-        }
     }
 
     private fun languageLauncherResult() {
-        languageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val data: Intent? = result.data
-                val languageCode = data?.getStringExtra(Constant.LANGUAGE)
-                Log.i("dongdong", "set language: $languageCode")
-                recreate()
+        languageLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val data: Intent? = result.data
+                    val languageCode = data?.getStringExtra(Constant.LANGUAGE)
+                    Log.i("dongdong", "set language: $languageCode")
+                    recreate()
+                }
             }
-        }
     }
 
     private fun setLanguage() {
@@ -235,6 +202,7 @@ class MainActivity : BaseActivity(){
                 showToast(getString(R.string.can_not_divide_by_zero))
                 null
             }
+
             "%" -> a % b
             else -> null
         }
@@ -242,10 +210,6 @@ class MainActivity : BaseActivity(){
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return toggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item)
     }
 
     override fun onResume() {

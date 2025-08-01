@@ -402,95 +402,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/option_view_by_menu"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headerLayout">
-
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/icon_language"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/option_background"
-                android:src="@drawable/language"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/icon" />
-
-            <ImageView
-                android:id="@+id/icon_theme"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/option_background"
-                android:src="@drawable/change_theme"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/icon_language" />
-
-
-            <ImageView
-                android:id="@+id/icon_rate"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/option_background"
-                android:src="@drawable/rate_us"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/icon_theme" />
-
-            <TextView
-                android:id="@+id/text_language"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/option_background"
-                android:text="@string/language"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@id/icon_language"
-                app:layout_constraintTop_toTopOf="@id/icon_language" />
-
-            <TextView
-                android:id="@+id/text_theme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/option_background"
-                android:text="@string/change_theme"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@id/icon_theme"
-                app:layout_constraintTop_toTopOf="@id/icon_theme" />
-
-            <TextView
-                android:id="@+id/text_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/option_background"
-                android:text="@string/rate"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@id/icon_rate"
-                app:layout_constraintTop_toTopOf="@id/icon_rate" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -498,11 +409,5 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="?attr/themeColor"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/nav_menu" />
-
-
+        app:headerLayout="@layout/nav_header"/>
 </androidx.drawerlayout.widget.DrawerLayout>
