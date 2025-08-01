@@ -2,30 +2,22 @@ package com.example.navigationdrawer
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.MutableLiveData
-import com.android.billingclient.api.AcknowledgePurchaseParams
+import androidx.lifecycle.lifecycleScope
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.BillingClientStateListener
 import com.android.billingclient.api.BillingFlowParams
 import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.ConsumeParams
-import com.android.billingclient.api.ConsumeResponseListener
 import com.android.billingclient.api.PendingPurchasesParams
-import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
-import com.android.billingclient.api.PurchasesUpdatedListener
 import com.android.billingclient.api.QueryProductDetailsParams
-import com.android.billingclient.api.QueryPurchasesParams
 import com.bac.simplecalculator.R
-import com.bac.simplecalculator.databinding.ActivityLanguageBinding
 import com.bac.simplecalculator.databinding.ActivityShopBinding
-import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 private const val KEY_IN_APP1 = "key_in_app1"
@@ -47,7 +39,8 @@ class ShopActivity : AppCompatActivity() {
         binding = ActivityShopBinding.inflate(layoutInflater)
         setContentView(binding.root)
         fullStatusBar()
-        binding.gold.text = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
+        binding.gold.text =
+            MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
         initBilling()
         initListener()
     }
@@ -73,7 +66,7 @@ class ShopActivity : AppCompatActivity() {
 
         billingClient = BillingClient.newBuilder(this)
             .enablePendingPurchases(params)
-            .setListener { billingResult, purchases  ->
+            .setListener { billingResult, purchases ->
                 if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
                     for (purchase in purchases) {
                         handlePurchase(purchase)
@@ -132,9 +125,11 @@ class ShopActivity : AppCompatActivity() {
         inAppProductIds.forEachIndexed { index, productId ->
             if (purchase!!.products[0] == productId) {
                 boughtCoins = coins[index] * purchase.quantity
-                var totalGem = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD) + boughtCoins
+                val totalGem = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD) + boughtCoins
                 MySharedPreferences.getInstance().saveData(Constants.SAVE_GOLD, totalGem)
-                MainScope().launch {
+
+                lifecycleScope.launch {
+                    delay(200)
                     binding.gold.text = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
                 }
             }
@@ -218,7 +213,8 @@ class ShopActivity : AppCompatActivity() {
         billingClient.queryProductDetailsAsync(params) { billingResult, productDetailsResult ->
             if (billingResult.responseCode != BillingClient.BillingResponseCode.OK) return@queryProductDetailsAsync
 
-            val productDetails = productDetailsResult.productDetailsList.firstOrNull() ?: return@queryProductDetailsAsync
+            val productDetails = productDetailsResult.productDetailsList.firstOrNull()
+                ?: return@queryProductDetailsAsync
 
             val offerToken = when (productType) {
                 BillingClient.ProductType.INAPP -> null
