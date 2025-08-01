@@ -7,7 +7,8 @@
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:paddingHorizontal="16dp"
-    android:background="@drawable/bg_item_language"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_sub_normal"
     android:clickable="true"
     android:focusable="true">
 
@@ -29,10 +30,26 @@
         android:textSize="16sp"
         android:textColor="#000000" />
 
-    <ImageView
-        android:id="@+id/icon_premium"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/icon_premium"
-        android:layout_marginStart="8dp"/>
+    <LinearLayout
+        android:id="@+id/ll_coin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@drawable/bg_selected">
+
+        <TextView
+            android:id="@+id/tv_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="400"
+            android:layout_marginStart="3dp"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="3dp"
+            android:src="@drawable/ic_coin"/>
+    </LinearLayout>
+
 </LinearLayout>

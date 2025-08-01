@@ -25,17 +25,17 @@ class LanguageAdapter(
         private val itemLayout = itemView.findViewById<View>(R.id.item_layout)
         private val languageName: TextView = itemView.findViewById(R.id.languageName)
         private val flagImage: ImageView = itemView.findViewById(R.id.flagImage)
-        private val icPremium: ImageView = itemView.findViewById(R.id.icon_premium)
+//        private val icPremium: ImageView = itemView.findViewById(R.id.icon_premium)
 
         fun bind(item: LanguageItem, isSelected: Boolean) {
             languageName.text = item.name
             flagImage.setImageResource(item.flagResId)
             itemView.isSelected = isSelected
-            icPremium.visibility = if (item.isPremium) View.VISIBLE else View.GONE
-            itemLayout.alpha = if (item.isPremium) 0.5f else 1f
+//            icPremium.visibility = if (item.isPremium) View.VISIBLE else View.GONE
+//            itemLayout.alpha = if (item.isPremium) 0.5f else 1f
 
             itemView.setOnClickListener {
-                if (item.isPremium) return@setOnClickListener
+//                if (item.isPremium) return@setOnClickListener
                 if (adapterPosition != RecyclerView.NO_POSITION && selectedPosition != adapterPosition) {
                     val prev = selectedPosition
                     selectedPosition = adapterPosition

@@ -15,8 +15,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.bac.simplecalculator.R
 import com.bac.simplecalculator.databinding.ActivityMainBinding
+import com.example.navigationdrawer.BaseActivity
 import com.example.navigationdrawer.Constant
 import com.example.navigationdrawer.Constants
+import com.example.navigationdrawer.LanguageNewActivity
 import com.example.navigationdrawer.LanguageUtils
 import com.example.navigationdrawer.MySharedPreferences
 import com.example.navigationdrawer.SharePreferenceUtils
@@ -24,7 +26,7 @@ import com.example.navigationdrawer.ShopActivity
 import com.example.navigationdrawer.ThemeUtils
 import com.example.navigationdrawer.fullStatusBar
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : BaseActivity(){
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var toggle: ActionBarDrawerToggle
@@ -51,11 +53,11 @@ class MainActivity : AppCompatActivity(){
 
         //Update
         binding.iconLanguage.setOnClickListener {
-            val intent = Intent(this, LanguageActivity::class.java)
+            val intent = Intent(this, LanguageNewActivity::class.java)
             languageLauncher.launch(intent)
         }
         binding.textLanguage.setOnClickListener {
-            val intent = Intent(this, LanguageActivity::class.java)
+            val intent = Intent(this, LanguageNewActivity::class.java)
             languageLauncher.launch(intent)
         }
 

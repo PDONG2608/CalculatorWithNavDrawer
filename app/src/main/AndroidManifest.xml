@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Green"
         tools:targetApi="31">
         <activity
+            android:name="com.example.navigationdrawer.LanguageNewActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.navigationdrawer.ShopActivity"
             android:exported="false" />
         <activity

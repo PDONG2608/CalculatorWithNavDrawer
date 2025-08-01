@@ -7,10 +7,11 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.bac.simplecalculator.R
 import com.bac.simplecalculator.databinding.ActivityRateBinding
+import com.example.navigationdrawer.BaseActivity
 import com.example.navigationdrawer.ThemeUtils
 import com.example.navigationdrawer.fullStatusBar
 
-class RateActivity : AppCompatActivity() {
+class RateActivity : BaseActivity() {
     private lateinit var binding: ActivityRateBinding
     private lateinit var stars: List<ImageView>
     private var selectedRating = 0

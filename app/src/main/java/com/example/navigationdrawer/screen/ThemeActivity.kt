@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bac.simplecalculator.R
 import com.bac.simplecalculator.databinding.ActivityThemeBinding
+import com.example.navigationdrawer.BaseActivity
 import com.example.navigationdrawer.Constant
 import com.example.navigationdrawer.SharePreferenceUtils
 import com.example.navigationdrawer.ThemeColor
@@ -15,7 +16,7 @@ import com.example.navigationdrawer.ThemeColorAdapter
 import com.example.navigationdrawer.ThemeUtils
 import com.example.navigationdrawer.fullStatusBar
 
-class ThemeActivity : AppCompatActivity() {
+class ThemeActivity : BaseActivity() {
 
     private lateinit var adapter: ThemeColorAdapter
     private lateinit var binding: ActivityThemeBinding

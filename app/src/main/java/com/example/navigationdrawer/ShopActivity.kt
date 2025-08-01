@@ -25,13 +25,14 @@ private const val KEY_IN_APP2 = "key_in_app2"
 private const val KEY_IN_APP3 = "key_in_app3"
 private const val KEY_IN_APP4 = "key_in_app4"
 
-class ShopActivity : AppCompatActivity() {
+class ShopActivity : BaseActivity() {
 
     private lateinit var binding: ActivityShopBinding
     private lateinit var billingClient: BillingClient
     private var coins = arrayListOf(50, 100, 200, 500)
     private var inAppProductIds = arrayListOf(KEY_IN_APP1, KEY_IN_APP2, KEY_IN_APP3, KEY_IN_APP4)
     private val optionSelectLiveData = MutableLiveData(KEY_IN_APP1)
+    private val showCoinBuySuccessLiveData = MutableLiveData(false)
     private var keyBuy = inAppProductIds[0]
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +40,7 @@ class ShopActivity : AppCompatActivity() {
         binding = ActivityShopBinding.inflate(layoutInflater)
         setContentView(binding.root)
         fullStatusBar()
-        binding.gold.text =
-            MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
+        binding.gold.text = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
         initBilling()
         initListener()
     }
@@ -127,11 +127,7 @@ class ShopActivity : AppCompatActivity() {
                 boughtCoins = coins[index] * purchase.quantity
                 val totalGem = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD) + boughtCoins
                 MySharedPreferences.getInstance().saveData(Constants.SAVE_GOLD, totalGem)
-
-                lifecycleScope.launch {
-                    delay(200)
-                    binding.gold.text = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
-                }
+                showCoinBuySuccessLiveData.postValue(true)
             }
         }
     }
@@ -146,6 +142,12 @@ class ShopActivity : AppCompatActivity() {
 
             btnPurchase.setOnClickListener {
                 launchPurchase(this@ShopActivity, keyBuy)
+            }
+        }
+
+        showCoinBuySuccessLiveData.observe(this) {
+            if (it) {
+                binding.gold.text = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
             }
         }
 
