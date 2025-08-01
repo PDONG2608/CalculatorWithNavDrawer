@@ -14,6 +14,16 @@
         android:theme="@style/Theme.Green"
         tools:targetApi="31">
         <activity
+            android:name="com.example.navigationdrawer.SplashActivity"
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.example.navigationdrawer.LanguageNewActivity"
             android:exported="false" />
         <activity
@@ -23,20 +33,11 @@
             android:name="com.example.navigationdrawer.screen.ThemeActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.navigationdrawer.screen.LanguageActivity"
-            android:exported="false" />
-        <activity
             android:name="com.example.navigationdrawer.screen.RateActivity"
             android:exported="false" />
         <activity
             android:name="com.example.navigationdrawer.screen.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"/>
     </application>
 
 </manifest>

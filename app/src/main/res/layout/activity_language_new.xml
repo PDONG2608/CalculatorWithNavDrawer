@@ -31,18 +31,42 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginStart="10dp"
             android:text="@string/language"
             android:textColor="?attr/themeColor"
             android:textSize="30dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/confirmButton"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:visibility="invisible"
-            android:src="@drawable/icon_check"
-            app:tint="#00C569" />
+        <LinearLayout
+            android:id="@+id/tv_gem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_selected"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_coin" />
+
+            <TextView
+                android:id="@+id/gold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="50"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
     </LinearLayout>
 
     <!-- Bottom Button -->
