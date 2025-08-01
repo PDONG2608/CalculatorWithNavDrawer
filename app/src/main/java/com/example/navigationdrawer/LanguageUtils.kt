@@ -1,34 +1,18 @@
 package com.example.navigationdrawer
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import com.example.navigationdrawer.BaseActivity.Companion.dLocale
+import com.example.navigationdrawer.screen.MainActivity
 import java.util.Locale
 
 
-class LanguageUtils {
-    companion object {
-        //new
-//        fun getContextWithLocale(context: Context, languageCode: String): Context {
-//            val locale = Locale(languageCode)
-//            val config = context.resources.configuration
-//            config.setLocale(locale)
-//            return context.createConfigurationContext(config)
-//        }
-
-        //old
-        fun setLocale(context: Context, languageCode: String) {
-            val res = context.resources
-            val dm = res.displayMetrics
-            val conf = res.configuration
-            conf.setLocale(Locale(languageCode.lowercase(Locale.getDefault()))) // API 17+ only.
-            res.updateConfiguration(conf, dm)
-        }
-
-        fun getLocaleCode(context: Context): String {
-            val locale =
-                context.resources.configuration.locales.get(0)
-            return locale.language.lowercase(Locale.getDefault())
-        }
-
-
+object LanguageUtils {
+    fun setLocale(context: Activity, languageCode: String) {
+        dLocale = Locale(languageCode)
+        val refresh = Intent(context, MainActivity::class.java)
+        context.startActivity(refresh)
+        context.finishAffinity()
     }
 }

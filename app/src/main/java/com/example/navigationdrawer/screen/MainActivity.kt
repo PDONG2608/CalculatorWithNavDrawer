@@ -41,7 +41,7 @@ class MainActivity : BaseActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         fullStatusBar()
-        setLanguage()
+//        setLanguage()
         ThemeUtils.setAppTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

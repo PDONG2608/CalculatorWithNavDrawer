@@ -21,7 +21,11 @@ class LanguageNewActivity : BaseActivity() {
 
     private fun initListeners() {
         binding.applyButton.setOnClickListener {
-
+            val saveCoin = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD)
+            if (saveCoin >= language.coin) {
+                LanguageUtils.setLocale(this, language.code)
+                MySharedPreferences.getInstance().saveData(Constants.LANGUAGE_CURRENT_CODE, language.code)
+            }
         }
     }
 
@@ -35,7 +39,6 @@ class LanguageNewActivity : BaseActivity() {
         languageList.add(LanguageItem(getString(R.string.korean), R.drawable.flag_kr, "ko", 250))
         languageList.add(LanguageItem(getString(R.string.portuguese), R.drawable.flag_pt, "pt", 350))
         languageList.add(LanguageItem(getString(R.string.spanish), R.drawable.flag_es, "es", 400))
-        languageList.add(LanguageItem(getString(R.string.arabic), R.drawable.flag_ar, "ar", 500))
         return languageList
     }
 
