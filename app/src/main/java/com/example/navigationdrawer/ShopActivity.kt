@@ -234,4 +234,9 @@ class ShopActivity : BaseActivity() {
             billingClient.launchBillingFlow(activity, flowParams)
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        binding.gold.text = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
+    }
 }

@@ -5,12 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.GravityCompat
-import androidx.navigation.ui.AppBarConfiguration
 import com.bac.simplecalculator.R
 import com.bac.simplecalculator.databinding.ActivityMainBinding
 import com.example.navigationdrawer.BaseActivity
@@ -55,6 +53,12 @@ class MainActivity : BaseActivity() {
         val ll1 = headerView.findViewById<LinearLayout>(R.id.ll1)
         val ll2 = headerView.findViewById<LinearLayout>(R.id.ll2)
         val ll3 = headerView.findViewById<LinearLayout>(R.id.ll3)
+
+        binding.apply {
+            ll1.isSelected = true
+            ll2.isSelected = true
+            ll3.isSelected = true
+        }
 
         ll1.setOnClickListener {
             startActivity(Intent(this, LanguageNewActivity::class.java))
@@ -214,6 +218,7 @@ class MainActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        binding.gold.text = MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
+        binding.gold.text =
+            MySharedPreferences.getInstance().getIntData(Constants.SAVE_GOLD).toString()
     }
 }

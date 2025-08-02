@@ -1,13 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Green" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Green" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/green</item>
         <item name="themeColor">@color/green</item>
 <!--        <item name="android:statusBarColor" tools:targetApi="l">@color/green</item>-->
 <!--        <item name="android:navigationBarColor" tools:targetApi="l">@color/green</item>-->
     </style>
 
-    <style name="Theme.Blue" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Blue" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue</item>
         <item name="themeColor">@color/blue</item>
 <!--        <item name="android:statusBarColor" tools:targetApi="l">@color/blue</item>-->
@@ -15,7 +15,7 @@
     </style>
 
 
-    <style name="Theme.Yellow" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Yellow" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/yellow</item>
         <item name="themeColor">@color/yellow</item>
 <!--        <item name="android:statusBarColor" tools:targetApi="l">@color/yellow</item>-->
@@ -23,35 +23,35 @@
     </style>
 
 
-    <style name="Theme.Orange" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Orange" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/orange</item>
         <item name="themeColor">@color/orange</item>
 <!--        <item name="android:statusBarColor" tools:targetApi="l">@color/orange</item>-->
 <!--        <item name="android:navigationBarColor" tools:targetApi="l">@color/orange</item>-->
     </style>
 
-    <style name="Theme.Purple" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Purple" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_700</item>
         <item name="themeColor">@color/purple_700</item>
 <!--        <item name="android:statusBarColor" tools:targetApi="l">@color/purple_700</item>-->
 <!--        <item name="android:navigationBarColor" tools:targetApi="l">@color/purple_700</item>-->
     </style>
 
-    <style name="Theme.Red" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Red" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/red</item>
         <item name="themeColor">@color/red</item>
 <!--        <item name="android:statusBarColor" tools:targetApi="l">@color/red</item>-->
 <!--        <item name="android:navigationBarColor" tools:targetApi="l">@color/red</item>-->
     </style>
 
-    <style name="Theme.Pink" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Pink" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/pink</item>
         <item name="themeColor">@color/pink</item>
 <!--        <item name="android:statusBarColor" tools:targetApi="l">@color/pink</item>-->
 <!--        <item name="android:navigationBarColor" tools:targetApi="l">@color/pink</item>-->
     </style>
 
-    <style name="Theme.Brown" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Brown" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/brown</item>
         <item name="themeColor">@color/brown</item>
 <!--        <item name="android:statusBarColor" tools:targetApi="l">@color/brown</item>-->
