@@ -43,4 +43,7 @@
     <string name="selected">Ausgewählt</string>
     <string name="can_not_divide_by_zero">Durch null kann nicht geteilt werden</string>
     <string name="error_format">Formatfehler</string>
+    <string name="shop">Shop</string>
+    <string name="purchase">Kaufen</string>
+    <string name="insufficient_gold">Unzureichendes Gold</string>
 </resources>

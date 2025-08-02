@@ -43,4 +43,7 @@
     <string name="selected">Selected</string>
     <string name="can_not_divide_by_zero">Can not divide by zero</string>
     <string name="error_format">Format error</string>
+    <string name="shop">Shop</string>
+    <string name="purchase">Purchase</string>
+    <string name="insufficient_gold">Insufficient gold</string>
 </resources>

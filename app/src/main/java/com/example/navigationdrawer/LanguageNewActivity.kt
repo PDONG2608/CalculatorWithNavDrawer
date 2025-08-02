@@ -36,7 +36,7 @@ class LanguageNewActivity : BaseActivity() {
                 binding.gold.text = remainingCoins.toString()
                 MySharedPreferences.getInstance().saveListInt(listCoins, Constants.SAVE_LIST_COINS, this)
             } else {
-                Toast.makeText(this, "Không đủ coin", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.insufficient_gold, Toast.LENGTH_SHORT).show()
             }
         }
 

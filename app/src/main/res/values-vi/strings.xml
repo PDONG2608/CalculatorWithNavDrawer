@@ -43,4 +43,7 @@
     <string name="selected">Đã chọn</string>
     <string name="can_not_divide_by_zero">Không thể chia cho 0</string>
     <string name="error_format">Lỗi định dạng</string>
+    <string name="shop">Cửa hàng</string>
+    <string name="purchase">Mua</string>
+    <string name="insufficient_gold">Không đủ vàng</string>
 </resources>
